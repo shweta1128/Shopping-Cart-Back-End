@@ -2,3 +2,8 @@
 -- Order the results by state abbreviation.
 -- (55 rows)
 
+select count(city_name) as num_cities , state_abbreviation
+from city
+where state_abbreviation != 'DC'
+group by state_abbreviation
+order by state_abbreviation;
