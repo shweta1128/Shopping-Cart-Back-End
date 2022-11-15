@@ -156,7 +156,7 @@ public class AssessmentPart1 {
 		 Q07_spaceReplacer("Stop Wait Listen ", "! ") -> "Stop! Wait! Listen! "
 	*/
 	public String Q07_spaceReplacer(String stringValue, String replaceSpaceWith) {
-		stringValue.replace("_", replaceSpaceWith);
+		stringValue.replace(" ", replaceSpaceWith);
 		return stringValue;
 	}
 
