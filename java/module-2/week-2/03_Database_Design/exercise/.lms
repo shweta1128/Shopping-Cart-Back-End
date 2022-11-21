@@ -1,1 +1,67 @@
 adbc38b3-b453-4af6-83f3-101ddd944416
+BEGIN TRANSACTION;
+DROP TABLE IF EXISTS interest_group_serial, event_serial, track_event, track_interest_group  CASCADE;
+DROP SEQUENCE IF EXISTS member_serial, interest_group_serial, event_serial;
+CREATE SEQUENCE member_serial;
+CREATE TABLE member(
+	member_id serial NOT NULL,
+	last_name varchar(100) NOT NULL,
+	first_name varchar(100) NOT NULL,
+	email_address varchar(100) NOT NULL,
+	phone_number int NOT NULL,
+	birthday date NOT NULL,
+	flag boolean NULL,
+	CONSTRAINT PK_member PRIMARY KEY (member_id)
+);
+CREATE SEQUENCE interest_group_serial;
+Create TABLE interest_group(
+	interest_group_id serial NOT NULL,
+	group_name varchar(100) NOT NULL,
+	member_id serial NOT NULL,
+	CONSTRAINT PK_interest_group PRIMARY KEY (interest_group_id),
+	CONSTRAINT FK_interest_group FOREIGN KEY (member_id)REFERENCES member (member_id)
+);
+CREATE SEQUENCE event_serial;
+Create TABLE event(
+	event_id serial NOT NULL,
+	event_name varchar(100) NOT NULL,
+	description varchar(500) NOT NULL,
+	date_time timestamp NOT NULL,
+	length_minutes int NOT NULL,
+	CONSTRAINT PK_event PRIMARY KEY (event_id)
+	--CONSTRAINT FK_interest_group FOREIGN KEY (interest_group_id) REFERENCES interest_group (interest_group_id)
+);
+CREATE TABLE track_event(
+	event_id int NOT NULL,
+	interest_group_id int NOT NULL,
+	CONSTRAINT PK_track_event PRIMARY KEY(event_id, interest_group_id),
+	CONSTRAINT FK_track_event_event FOREIGN KEY(event_id) REFERENCES event (event_id)
+	--CONSTRAINT FK_track_event_interest_group FOREIGN KEY(event_id, interest_group_id) REFERENCES interest_group (interest_group_id)
+);
+CREATE TABLE track_interest_group(
+	member_id int NOT NULL,
+	interest_group_id int NOT NULL,
+	CONSTRAINT PK_track_interest_group PRIMARY KEY(member_id, interest_group_id),
+	CONSTRAINT FK_track_interest_group_member FOREIGN KEY(member_id) REFERENCES member(member_id)
+	--CONSTRAINT FK_track_interest_group_interest_interest_group FOREIGN KEY(member_id, interest_group_id) REFERENCES interest_group (interest_group_id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
