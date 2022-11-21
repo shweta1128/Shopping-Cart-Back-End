@@ -85,7 +85,7 @@ VALUES
 INSERT INTO track_people
 (people_id , event_id)
 VALUES
-((SELECT member_id FROM member WHERE last_name = 'Johnson'), (SELECT event_id FROM event WHERE event_name = 'event1')),
+((SELECT member_id FROM member WHERE last_name = 'Johnson'), (SELECT event_id FROM event WHERE event_name = 'event3')),
 ((SELECT member_id FROM member WHERE last_name = 'Johnson2'), (SELECT event_id FROM event WHERE event_name = 'event2'));
 
 
