@@ -34,7 +34,6 @@ public class JdbcCityDao implements CityDao {
         List<City> cities = new ArrayList<>();
         String sql = "SELECT city_id, city_name, state_abbreviation, population, area " +
                      "FROM city " +
-                     "WHERE state_abbreviation = ? " +
                      "ORDER BY city_id;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation);
         while (results.next()) {
@@ -48,7 +47,7 @@ public class JdbcCityDao implements CityDao {
         String sql = "INSERT INTO city (city_name, state_abbreviation, population, area) " +
                      "VALUES (?, ?, ?, ?) RETURNING city_id;";
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
-                city.getCityName(), city.getStateAbbreviation(), city.getPopulation(), city.getArea());
+                city.getStateAbbreviation(), city.getStateAbbreviation(), city.getPopulation(), city.getArea());
 
         return getCity(newId);
     }
