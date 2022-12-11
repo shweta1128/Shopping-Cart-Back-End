@@ -34,6 +34,7 @@ public class JdbcLineItemDaoTest extends BaseDaoTests {
     public void getLineItem_returns_list_of_correct_sale_for_id(){
         List<LineItem> lineItems = lineItemDao.getLineItemsBySale(1);
         Assert.assertEquals(3, lineItems.size());
+        // this method below on line 37 is an alternation for assertLineItemsMatch on line 48
         Assert.assertEquals(LINE_ITEM_1.getSaleId(), lineItems.get(0).getSaleId());
         assertLineItemsMatch(LINE_ITEM_1, lineItems.get(0));
         assertLineItemsMatch(LINE_ITEM_2, lineItems.get(1));
