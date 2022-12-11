@@ -40,5 +40,5 @@ Expected output: update timesheet to have a billable value as false
 
 Actual output: update timesheet to have a billable value as true
 
-How did you fix this bug? we updated a method name isbillable in the sql statement
+How did you fix this bug? we updated a method name isbillable in the sql statement, that is we added billable in the SQL
 

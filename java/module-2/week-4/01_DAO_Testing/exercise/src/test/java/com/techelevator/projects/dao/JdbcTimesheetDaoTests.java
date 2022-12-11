@@ -74,7 +74,6 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
         // Assert
         Assert.assertEquals(2,timesheets.size() );
-
     }
 
     @Test

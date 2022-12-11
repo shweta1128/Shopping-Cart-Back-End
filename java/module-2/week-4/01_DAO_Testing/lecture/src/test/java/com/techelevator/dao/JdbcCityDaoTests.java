@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-
+import java.util.concurrent.Callable;
 public class JdbcCityDaoTests extends BaseDaoTests {
 
     private static final City CITY_1 = new City(1, "City 1", "AA", 11,111);
@@ -25,17 +25,33 @@ public class JdbcCityDaoTests extends BaseDaoTests {
 
     @Test
     public void getCity_returns_correct_city_for_id() {
-        Assert.fail();
+        City testCity = sut.getCity(1);
+    //    Assert.assertEquals(111,testCity.getArea(), 0.01);
+         assertCitiesMatch(CITY_1, testCity);
+// we use assertCitiesMatches for all the attributes of city_id
+
     }
 
     @Test
     public void getCity_returns_null_when_id_not_found() {
-        Assert.fail();
+     City testCity = sut.getCity(5);
+   //  Assert.assertEquals(null, testCity);
+     Assert.assertNull(testCity);
+    //   we can use either of the assert for comparing the data
+
     }
+
+
 
     @Test
     public void getCitiesByState_returns_all_cities_for_state() {
-        Assert.fail();
+
+      List<City> citiesReturned = sut.getCitiesByState("AA");
+
+      Assert.assertEquals(2, citiesReturned.size());
+
+      assertCitiesMatch(CITY_1, citiesReturned.get(0));
+      assertCitiesMatch(CITY_4, citiesReturned.get(1));
     }
 
     @Test
@@ -45,8 +61,18 @@ public class JdbcCityDaoTests extends BaseDaoTests {
 
     @Test
     public void createCity_returns_city_with_id_and_expected_values() {
-        Assert.fail();
+        City insertCity =  sut.createCity(testCity);
+        Assert.assertEquals(true, insertCity.getCityId() > 0);
+        insertCity.setCityName(CITY_1.getCityName());
+        insertCity.setStateAbbreviation(CITY_1.getStateAbbreviation());
+        insertCity.setPopulation(CITY_1.getPopulation());
+        insertCity.setArea(CITY_1.getArea());
+
+
+
     }
+
+
 
     @Test
     public void created_city_has_expected_values_when_retrieved() {
