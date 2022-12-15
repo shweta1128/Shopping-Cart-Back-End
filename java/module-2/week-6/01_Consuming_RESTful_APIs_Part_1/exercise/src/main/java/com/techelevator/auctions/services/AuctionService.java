@@ -7,27 +7,30 @@ import com.techelevator.auctions.model.Auction;
 public class AuctionService {
 
     public static String API_BASE_URL = "http://localhost:3000/auctions/";
+  //  public static String API_BASE_URL_ID = "http://localhost:3000/auctions?id=2";
     private RestTemplate restTemplate = new RestTemplate();
 
 
     public Auction[] getAllAuctions() {
         // call api here
-        return null;
+
+        return restTemplate.getForObject(API_BASE_URL,Auction[].class);
     }
 
     public Auction getAuction(int id) {
         // call api here
-        return null;
+
+        return  restTemplate.getForObject(API_BASE_URL + id,Auction.class);
     }
 
     public Auction[] getAuctionsMatchingTitle(String title) {
         // call api here
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "?title_like=" + title,Auction[].class);
     }
 
     public Auction[] getAuctionsAtOrBelowPrice(double price) {
         // call api here
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "?currentBid_lte=" + price, Auction[].class );
     }
 
 }
