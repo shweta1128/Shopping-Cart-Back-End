@@ -21,7 +21,17 @@ public class LocationService {
     public Location[] getAll() {
         Location[] locations = null;
         try {
-            locations = restTemplate.getForObject(API_BASE_URL, Location[].class);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setBearerAuth(authToken);
+            //user is authorised
+
+            HttpEntity<Void> entity = new HttpEntity<>(headers);
+           // creating an Entity
+            ResponseEntity<Location[]> response =
+                    restTemplate.exchange(API_BASE_URL, HttpMethod.GET, entity, Location[].class);
+            locations = response.getBody();
+
+
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }
@@ -31,7 +41,12 @@ public class LocationService {
     public Location getOne(int id) {
         Location location = null;
         try {
-            location = restTemplate.getForObject(API_BASE_URL + id, Location.class);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setBearerAuth(authToken);
+            HttpEntity<Void> entity = new HttpEntity<>(headers);
+            ResponseEntity<Location> response = restTemplate.exchange(API_BASE_URL + id,
+                    HttpMethod.GET, entity, Location.class);
+            location = response.getBody();
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }
@@ -72,6 +87,7 @@ public class LocationService {
             BasicLogger.log(e.getMessage());
         }
         return success;
+
     }
 
     private HttpEntity<Location> makeLocationEntity(Location location) {
