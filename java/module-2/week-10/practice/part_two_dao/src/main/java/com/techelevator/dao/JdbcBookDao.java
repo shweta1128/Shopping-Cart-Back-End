@@ -18,14 +18,47 @@ public class JdbcBookDao implements BookDao {
     }
 
     @Override
-    public Book getBook(int bookId) { return null; }
+    public Book getBook(int bookId) {
+        Book book = new Book();
+        String sqlForBookId = "SELECT book_id, book_title, star_rating, out_of_print, foreword_by, publisher_id, published_date " +
+                "FROM book " +
+                "WHERE book_id = ? ;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForBookId, bookId);
+        if (results.next()) {
+            book = mapRowToBook(results);
+        }
+        return book;
+    }
 
     @Override
-    public Book updateRating(int bookId, BigDecimal newRating) { return null; }
+    public Book updateRating(int bookId, BigDecimal newRating) {
+        Book book = null;
+        String sqlForBookId = "SELECT book_id, book_title, star_rating, out_of_print, foreword_by, publisher_id, published_date " +
+                "FROM book " +
+                "WHERE book_id = ? ;" ;
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForBookId, bookId);
+        while (results.next()){
+            book = mapRowToBook(results);
+        }
+        book.setStarRating(newRating);
+        String sqlToUpdateTheRatings = "UPDATE book SET star_rating = ? " +
+                "WHERE book_id = ? ;";
+        jdbcTemplate.update(sqlToUpdateTheRatings, book.getStarRating(),bookId);
+
+      return book;
+    }
 
     @Override
     public void deleteBook(int bookId) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+       try {
+           String sqlToDeleteFromAuthor = "DELETE FROM book_author ba WHERE ba.book_id = ? ;";
+           jdbcTemplate.update(sqlToDeleteFromAuthor, bookId);
+           String sqlToDeleteTheBook = "DELETE FROM book WHERE book.book_id = ? ;";
+           jdbcTemplate.update(sqlToDeleteTheBook, bookId);
+       }
+       catch(Exception e){
+           System.out.println("Error");
+       }
     }
 
     private Book mapRowToBook(SqlRowSet results) {
@@ -36,7 +69,9 @@ public class JdbcBookDao implements BookDao {
         book.setOutOfPrint(results.getBoolean("out_of_print"));
         book.setForewordBy((Integer) results.getObject("foreword_by"));
         book.setPublisherId(results.getInt("publisher_id"));
-        book.setPublishedDate(results.getDate("published_date").toLocalDate());
+        if (results.getDate("published_date") != null) {
+            book.setPublishedDate(results.getDate("published_date").toLocalDate());
+        }
         return book;
     }
 }

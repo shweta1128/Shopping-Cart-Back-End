@@ -42,9 +42,9 @@ public class CartServices {
          List<CartItem> results = cartItemDao.getAllItemsInCart(userId);
             Cart cart = new Cart(results);
             List<Product> productResults = productDao.listOfProductId(userId);
-            for(CartItem cartItem: results){
-               cartItem.setProduct(getProducts(productResults, cartItem.getProductId()));
-            }
+//            for(CartItem cartItem: results){
+//               cartItem.setProduct(getProducts(productResults, cartItem.getProductId()));
+//            }
             return cart;
     }
 
