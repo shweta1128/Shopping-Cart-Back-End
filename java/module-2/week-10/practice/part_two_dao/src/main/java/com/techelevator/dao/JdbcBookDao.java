@@ -32,7 +32,7 @@ public class JdbcBookDao implements BookDao {
 
     @Override
     public Book updateRating(int bookId, BigDecimal newRating) {
-        Book book = null;
+        Book book = new Book();
         String sqlForBookId = "SELECT book_id, book_title, star_rating, out_of_print, foreword_by, publisher_id, published_date " +
                 "FROM book " +
                 "WHERE book_id = ? ;" ;
