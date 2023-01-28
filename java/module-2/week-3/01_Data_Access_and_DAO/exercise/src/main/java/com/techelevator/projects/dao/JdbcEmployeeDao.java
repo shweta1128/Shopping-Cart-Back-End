@@ -76,7 +76,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
 	@Override
 	public void addEmployeeToProject(int projectId, int employeeId) {
-		List<Employee> employees = new ArrayList<>();
+		//List<Employee> employees = new ArrayList<>();
 		String sql = "INSERT INTO project_employee (project_id,employee_id) " +
 				"VALUES(? , ? )";
 	     jdbcTemplate.update(sql, projectId, employeeId);
