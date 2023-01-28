@@ -2,8 +2,10 @@
 -- Order by book title (A-Z).
 -- Tip: make sure to add a space between the author's first and last names.
 -- (5 rows)
-SELECT b.book_title, first_name || ' '|| last_name , b.foreword_by AS foreword_author 
-FROM person p
-JOIN book b ON p.person_id = b.foreword_by
-WHERE book_title = 'Moishe Reiling'
+SELECT book_title, person.first_name || ' ' || person.last_name AS foreword_author
+FROM book
+JOIN person ON book.foreword_by = person.person_id
+JOIN book_author ON person.person_id = book_author.author_id
+WHERE book.book_title  = '% Moishe Reiling %'
+GROUP BY person.first_name, person.last_name, book_title
 ORDER BY book_title ASC;
