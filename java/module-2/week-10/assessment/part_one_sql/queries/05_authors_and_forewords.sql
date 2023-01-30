@@ -5,7 +5,7 @@
 SELECT book_title, person.first_name || ' ' || person.last_name AS foreword_author
 FROM book
 JOIN person ON book.foreword_by = person.person_id
-JOIN book_author ON person.person_id = book_author.author_id
-WHERE book.book_title  = '% Moishe Reiling %'
-GROUP BY person.first_name, person.last_name, book_title
-ORDER BY book_title ASC;
+JOIN book_author ON book.book_id = book_author.book_id
+WHERE author_id = 3
+GROUP BY  book_title , foreword_author
+ORDER BY book.book_title ASC;
