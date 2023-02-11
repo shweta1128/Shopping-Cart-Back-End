@@ -49,6 +49,10 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public CartItem(){
+
+    }
+
     public CartItem(int cartItemId, int userId, int productId, int quantity) {
         this.cartItemId = cartItemId;
         this.userId = userId;

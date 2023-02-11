@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.Principal;
 import java.util.List;
 
@@ -22,11 +23,13 @@ public class CartServices {
     private UserDao userDao;
     private ProductDao productDao;
     private CartItemDao cartItemDao;
+    private TaxServices taxServices;
 
-    public CartServices(UserDao userDao, ProductDao productDao, CartItemDao cartItemDao) {
+    public CartServices(UserDao userDao, ProductDao productDao, CartItemDao cartItemDao, TaxServices taxServices) {
         this.userDao = userDao;
         this.productDao = productDao;
         this.cartItemDao = cartItemDao;
+        this.taxServices = taxServices;
     }
 
 
@@ -42,9 +45,19 @@ public class CartServices {
          List<CartItem> results = cartItemDao.getAllItemsInCart(userId);
             Cart cart = new Cart(results);
             List<Product> productResults = productDao.listOfProductId(userId);
-//            for(CartItem cartItem: results){
-//               cartItem.setProduct(getProducts(productResults, cartItem.getProductId()));
-//            }
+           for(CartItem cartItem: results){
+              for(Product product: productResults){
+                 if(product.getProductId() == cartItem.getProductId()){
+                     cartItem.setProduct(product);
+                 }
+
+              }
+
+            }
+           BigDecimal subTotal = cart.subTotalOfItems();
+           cart.setSubTotal(subTotal);
+           BigDecimal tax = subTotal.multiply(taxServices.getSalesTax(user.getStateCode()));
+           cart.setTax(tax.setScale(2, RoundingMode.HALF_UP));
             return cart;
     }
 

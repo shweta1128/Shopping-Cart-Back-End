@@ -1,0 +1,44 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  background-color: #ebc9c9;
+}
+h1 {
+    align-items: center;
+    color: rgb(180, 70, 70);
+  }
+  img {
+    width: 400px;
+  }
+  
+section#facts-section > h2 {
+  text-decoration: underline;
+}
+section#quotes-section > h2 {
+  text-decoration: underline;
+}
+
+section#quotes-section blockquote{
+  font-style: italic;
+}
+  
+section#links-section > h2 {
+  text-decoration: underline;
+}
+body form {
+  background-color: #ebc9c9;
+}
+
+
+
+body form label[for=favorite-color]{
+  background-color: #cfc9eb;
+}
+
+body form input#lucky-number{
+  font-variant-numeric: normal;
+}
+
+body form input#email{
+  text-decoration: antiquewhite;
+}

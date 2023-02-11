@@ -24,9 +24,8 @@ public class JdbcCartItemDao implements CartItemDao {
     @Override
     public List<CartItem> getAllItemsInCart(int userId) {
         List<CartItem> allItemsInCart = new ArrayList<>();
-        String sqlForCartItem = "SELECT cart_item_id, user_id, quantity, p.price " +
+        String sqlForCartItem = "SELECT cart_item_id, user_id, quantity, product_id " +
                                  "FROM cart_item c " +
-                                 "JOIN product p ON c.product_id = p.product_id " +
                                   "WHERE user_id = ? ;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sqlForCartItem, userId);
         while (results.next()){
@@ -56,7 +55,7 @@ public class JdbcCartItemDao implements CartItemDao {
 
     private CartItem mapRowToCartItem(SqlRowSet results) {
 
-        CartItem cartItem = null;
+        CartItem cartItem = new CartItem();
         cartItem.setCartItemId(results.getInt("cart_item_id"));
         cartItem.setUserId(results.getInt("user_id"));
         cartItem.setProductId(results.getInt("product_id"));

@@ -3,7 +3,7 @@
 -- Tip: make sure to add a space between the author's first and last names.
 -- (16 rows)
 
-SELECT  person.first_name || ' '|| person. last_name AS author, COUNT(book_title) AS num_books
+SELECT  person.first_name || ' '|| person. last_name AS author, COUNT(*) AS num_books
 FROM book 
 JOIN person ON book.foreword_by = person.person_id
 JOIN book_author ON person.person_id = book_author.author_id
