@@ -9,6 +9,12 @@ body {
   height: 500px;
 }
 
+div.container{
+  display: flex;
+  align-items: center;
+  
+
+}
 .box {
   padding: 40px 55px;
   background-color: #00AFEF;

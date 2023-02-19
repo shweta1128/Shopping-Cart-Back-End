@@ -1,4 +1,5 @@
 body {
+  display: flex;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -8,17 +9,64 @@ body {
 
 #left-panel {
   background-color: #F7F7F7;
+  flex-basis: 35%;
 }
+
 
 ul.social-icons {
   list-style-type: none;
   margin: 20px 20px;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0;
 }
 
-nav {}
+nav {
+  display: flex;
 
-#right-panel {}
+}
+section#left-panel > header {
+  display: flex;
+  flex-grow: 0;
+}
+section#left-panel > h2{
+  display: flex;
+  flex-grow: 0;
+}
+section#left-panel > p{
+display: flex;
+flex-grow: 0;
+
+}
+section#right-panel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+section#left-panel > nav {
+  display: flex;
+  flex-grow: 5;
+}
+section#left-panel{
+  display: flex;
+  flex-direction: column;
+  /* flex-basis: 35%; */
+}
+
+section#right-panel {
+  display: flex;
+  justify-content: center;
+  flex-basis: 65%;
+  
+}
+  
+
+#right-panel {
+  display: flex;
+  flex-direction: row;
+}
 
 /* YOU WON'T NEED TO CHANGE ANY STYLES BELOW THIS LINE */
 

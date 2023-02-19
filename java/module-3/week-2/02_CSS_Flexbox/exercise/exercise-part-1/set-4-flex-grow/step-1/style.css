@@ -7,7 +7,15 @@ body {
 .container {
   background-color: #F0F0F0;
 }
+div.container{
+  display: flex;
 
+  flex-grow: 1;
+}
+div.box{
+  display: flex;
+  flex-grow: 1;
+}
 .box {
   padding: 40px 55px;
   margin: 15px 0;

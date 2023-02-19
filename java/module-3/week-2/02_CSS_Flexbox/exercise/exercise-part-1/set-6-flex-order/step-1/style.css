@@ -11,8 +11,17 @@ body {
   border: solid 1px #555;
 }
 
+div.bio {
+  display: flex;
+
+
+}
 .bio img {
   width: 150px;
   border-radius: 999px;
   margin: 0 10px;
+}
+div.bio:nth-child(2){
+  display: flex;
+  flex-direction: row-reverse;
 }

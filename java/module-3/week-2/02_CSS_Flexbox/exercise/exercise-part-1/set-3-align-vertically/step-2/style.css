@@ -8,6 +8,10 @@ body {
   background-color: #F0F0F0;
   height: 500px;
 }
+div.container {
+  display: flex;
+  align-items: flex-end;
+}
 
 .box {
   padding: 40px 55px;

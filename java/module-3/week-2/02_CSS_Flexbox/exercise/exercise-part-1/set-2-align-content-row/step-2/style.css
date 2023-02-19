@@ -7,6 +7,10 @@ body {
 .container {
   background-color: #F0F0F0;
 }
+div.container {
+  display: flex;
+  justify-content: space-between;
+}
 
 .box {
   padding: 40px 55px;
