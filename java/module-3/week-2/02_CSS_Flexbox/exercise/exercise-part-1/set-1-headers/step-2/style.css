@@ -4,6 +4,7 @@ body {
 }
 
 header {
+  display: flex;
   background-color: #F0F0F0;
   padding: 20px;
   display: flex;
@@ -20,6 +21,7 @@ header > nav > ul{
 }
 
 ul {
+  display: flex;
   margin: 0;
   padding: 0;
   list-style-type: none;
