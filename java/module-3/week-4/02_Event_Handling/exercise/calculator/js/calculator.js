@@ -11,19 +11,19 @@ function performOperation() {
   const current = parseNumber(display.value);
   previous = parseNumber(previous);
 
-  switch(operator) {
-    case '+' :
+  switch (operator) {
+    case '+':
       result = previous + current;
-    break;
-    case '-' :
-        result = previous - current;
-    break;
-    case '*' :
-        result = previous * current;
-    break;
-    case '/' :
-        result = previous / current;
-    break;
+      break;
+    case '-':
+      result = previous - current;
+      break;
+    case '*':
+      result = previous * current;
+      break;
+    case '/':
+      result = previous / current;
+      break;
   }
 
   display.value = result;
@@ -55,7 +55,7 @@ function clickOperator(event) {
 function clickNumber(event) {
   const val = event.target.value;
 
-  if( operatorClicked ) {
+  if (operatorClicked) {
     display.value = val;
     operatorClicked = false;
   } else {
@@ -72,7 +72,36 @@ function clear() {
 }
 
 // add event listener for when the DOM is loaded
-document.addEventListener('LOADED_EVENT_GOES_HERE', () => {
+document.addEventListener('DOMContentLoaded', () => {
+
+  display = document.querySelector('#display');
+
+  const list = document.querySelectorAll('button.number');
+  list.forEach((item) => {
+    item.addEventListener('click', clickNumber);
+  });
+  const num = document.querySelector('.decimal');
+  num.addEventListener('click', clickNumber);
+
+
+
+  const clearButton = document.querySelector('.all-clear');
+  clearButton.addEventListener('click', clear);
+
+
+  const operators = document.querySelectorAll('.operator');
+  operators.forEach((item) => {
+    item.addEventListener('click', clickOperator);
+
+  });
+
+
+  const equal = document.querySelector('.equal-sign');
+  equal.addEventListener('click', performOperation);
+
+
+
+
 
   // set the variable called display declared at the top of this file equal to the display element
   // HINT: use its id #display to get a reference to it
