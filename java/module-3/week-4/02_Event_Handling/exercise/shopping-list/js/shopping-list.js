@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       }
-      
+
     });
     ul.addEventListener('dblclick', () => {
       if (ul.classList.contains('completed')) {
@@ -59,28 +59,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   });
-  const completeAll = document.getElementById('toggleAll');
+  const completeAll = document.querySelector('#toggleAll');
   completeAll.addEventListener('click', () => {
+    if (allItemsIncomplete) {
     uls.forEach((task) => {
-      task.classList.add('completed');
-      task.querySelector('i').classList.add('completed')
-  
+       task.classList.add('completed');
+        task.querySelector('i').classList.add('completed')
+
     });
-  });
-     completeAll.innerText = 'Mark All Incomplete';
-    
-  
-    completeAll.addEventListener('dblclick', () => {
-      uls.forEach((task) => {
+    completeAll.innerText = 'Mark All Incomplete';
+    allItemsIncomplete = false;
+  } else {
+    uls.forEach((task) => {
+      
         task.classList.remove('completed');
         task.querySelector('i').classList.remove('completed');
-        
-      });
-      completeAll.innerText = 'Mark All Complete';
-
-
+      
+      
+      
     });
+    allItemsIncomplete = true;
+    completeAll.innerText = 'Mark All Complete';
+    
+  }
+   
+
+  });
+
+
+    
+   
+
+
   
+
 
 
 
@@ -88,26 +100,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //   uls.forEach((ul) => {
-   
+
   //       ul.classList.add('completed');
   //       ul.querySelector('i').classList.add('completed');
 
 
-      
-      
+
+
 
   //   });
   //   allItemsIncomplete = false;
   //     completeAll.innerText = 'Mark All complete';
-    
+
 
   //   completeAll.addEventListener('dblclick', () => {
   //     uls.forEach((ul) => {
-      
+
   //         ul.classList.remove('completed');
   //         ul.querySelector('i').classList.remove('completed');
-          
-      
+
+
   //     });
   //     allItemsIncomplete = true;
   //     completeAll.innerText = 'Mark All Incomplete';
