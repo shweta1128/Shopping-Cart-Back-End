@@ -26,7 +26,7 @@ function setPageTitle() {
  * This function will loop over the array of groceries that was set above and add them to the DOM.
  */
 function displayGroceries() {
-  const ul = document.querySelector('ul');
+  const item = document.querySelector('item');
   groceries.forEach((item) => {
     const li = document.createElement('li');
     li.innerText = item.name;
@@ -40,21 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
   setPageTitle();
   displayGroceries();
   const uls = document.querySelectorAll('li');
-  uls.forEach((ul) => {
-    ul.addEventListener('click', () => {
-      if (!ul.classList.contains('completed')) {
-        ul.classList.add('completed');
-        ul.querySelector('i').classList.add('completed');
-
-
+  uls.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (!item.classList.contains('completed')) {
+        item.classList.add('completed');
+        item.querySelector('i').classList.add('completed');
       }
-
     });
-    ul.addEventListener('dblclick', () => {
-      if (ul.classList.contains('completed')) {
-        ul.classList.remove('completed');
-        ul.querySelector('i').classList.remove('completed');
-
+    item.addEventListener('dblclick', () => {
+      if (item.classList.contains('completed')) {
+        item.classList.remove('completed');
+        item.querySelector('i').classList.remove('completed');
       }
     });
 
@@ -62,36 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const completeAll = document.querySelector('#toggleAll');
   completeAll.addEventListener('click', () => {
     if (allItemsIncomplete) {
-    uls.forEach((task) => {
-       task.classList.add('completed');
+      uls.forEach((task) => {
+        task.classList.add('completed');
         task.querySelector('i').classList.add('completed')
-
-    });
-    completeAll.innerText = 'Mark All Incomplete';
-    allItemsIncomplete = false;
-  } else {
-    uls.forEach((task) => {
-      
+      });
+      completeAll.innerText = 'Mark All Incomplete';
+      allItemsIncomplete = false;
+    } else {
+      uls.forEach((task) => {
         task.classList.remove('completed');
         task.querySelector('i').classList.remove('completed');
-      
-      
-      
-    });
-    allItemsIncomplete = true;
-    completeAll.innerText = 'Mark All Complete';
-    
-  }
-   
-
+      });
+      allItemsIncomplete = true;
+      completeAll.innerText = 'Mark All Complete';
+    }
   });
 
 
-    
-   
-
-
-  
 
 
 
@@ -99,10 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  //   uls.forEach((ul) => {
 
-  //       ul.classList.add('completed');
-  //       ul.querySelector('i').classList.add('completed');
+
+
+
+
+  //   uls.forEach((item) => {
+
+  //       item.classList.add('completed');
+  //       item.querySelector('i').classList.add('completed');
 
 
 
@@ -114,10 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //   completeAll.addEventListener('dblclick', () => {
-  //     uls.forEach((ul) => {
+  //     uls.forEach((item) => {
 
-  //         ul.classList.remove('completed');
-  //         ul.querySelector('i').classList.remove('completed');
+  //         item.classList.remove('completed');
+  //         item.querySelector('i').classList.remove('completed');
 
 
   //     });
