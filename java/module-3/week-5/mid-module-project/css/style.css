@@ -141,6 +141,7 @@ main{
 }
 .product-name{
     grid-area:product-name;
+    cursor: pointer;
 }
 .product-image{
     grid-area:product-image;
@@ -151,7 +152,9 @@ main{
     justify-content: flex-end;
     grid-area:cart;
 }
-
+.icon{
+    cursor: pointer;
+}
 
 
 nav {

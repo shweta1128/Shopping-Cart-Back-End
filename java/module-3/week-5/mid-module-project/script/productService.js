@@ -62,18 +62,20 @@ let productService = {
     return this.allProducts;
   },
 
-  getProductById(id){
-    allProducts.forEach((item) => {
+  getProductById(id) {
+    this.allProducts.forEach((item) => {
       if (item.productId == id) {
-        window.alert('Items added to the list') ;
+        // window.alert('Items added to the list') ;
         return item;
-      
-      } 
-    
-  });
-  return null;
-}
-  };
+
+      }
+    }); 
+    return null;
+  }
 
   
+  
+  };
+
+
 
