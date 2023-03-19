@@ -236,6 +236,7 @@ export default {
 
        this.selectedUserIDs = []
      }, 
+     //this is for the select all
      selectAll(event) {
        this.selectedUserIDs = [];
        if(event.target.checked){
