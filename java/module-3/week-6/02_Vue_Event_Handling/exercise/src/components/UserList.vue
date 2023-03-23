@@ -62,7 +62,7 @@
           <td>{{ user.status }}</td>
           <td>
             <button class="btnEnableDisable" v-on:click="flipStatus(user.id)">
-              Enable or Disable
+            Enable or Disable
             </button>
           </td>
         </tr>
@@ -193,6 +193,15 @@ export default {
         status: "Active"
      };
     },
+    // toggle() {
+    //   if(this.users.status === "Active") {
+    //       return "Disable";
+    //   } else {
+    //     return "Enable";
+    //   }
+
+
+    // },
     flipStatus(id) {
       const index = this.findUserById(id);
       this.users[index].status =
