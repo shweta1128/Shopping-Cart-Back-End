@@ -28,7 +28,8 @@ export default {
                 author: '',
                 read: false,
                 isbn: ''
-            };
+            },
+            this.$router.push({name: 'MyBooks'})
         }
     }
 }
