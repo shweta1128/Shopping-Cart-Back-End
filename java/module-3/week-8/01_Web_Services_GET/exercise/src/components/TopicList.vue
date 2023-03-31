@@ -1,7 +1,8 @@
 <template>
-  <div class="topic-list">
-    <div v-for="topic in topics" v-bind:key="topic.id" v-on:click="viewMessage" class="topic">
-      {{ topic.title }}
+  <div class="topic-list" >
+    <div v-for="topic in topics" v-bind:key="topic.id"  class="topic">
+      <!-- {{ topic.title }} -->
+      <router-link v-bind:to="{name:'Messages',params:{id:topic.id}}">{{ topic.title }}</router-link>
     </div>
   </div>
 </template>
@@ -15,11 +16,11 @@ export default {
       topics: []
     }
   },
-  methods: {
-    viewMessage(id) {
-      this.$router.push(`/${id}`);
-    }
-  },
+  // methods: {
+  //   viewMessage(id) {
+  //     this.$router.push(`/${id}`);
+  //   }
+  // },
   
   created() {
     topicsService.list().then((response) => {

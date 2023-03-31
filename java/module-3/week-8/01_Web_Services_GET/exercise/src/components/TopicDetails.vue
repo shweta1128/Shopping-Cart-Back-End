@@ -27,7 +27,7 @@ export default {
     }
   },
   created() {
-    topicsService.get(this.$route.params.id).then((response) => {
+    topicsService.get(this.topicId).then((response) => {
      this.topic = response.data;
     });
   }
