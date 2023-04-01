@@ -35,7 +35,7 @@ export default {
       messageService.delete(id)
       .then(response => {
       if(response.status == 200){
-        this.getMessages();
+        this.$store.commit("DELETE_MESSAGE", id);
       }
       });
     }

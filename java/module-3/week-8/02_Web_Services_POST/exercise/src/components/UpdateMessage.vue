@@ -34,9 +34,10 @@ export default {
         title: this.title,
         messageText: this.messageText
       };
-      messageService.update(message.id, message).then(response => {
-    if (response.status === 200) {
-      this.$router.push({name: 'Messages', params: {id: this.message.topicId}})
+      messageService.update(message.id, message)
+      .then(response => {
+    if (response.status == 200) {
+      this.$router.push({name:'Messages', params:{id: message.topicId}})
     }
   });
     }
