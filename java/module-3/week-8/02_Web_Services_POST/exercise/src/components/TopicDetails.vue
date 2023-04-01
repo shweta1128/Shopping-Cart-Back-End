@@ -31,7 +31,14 @@ export default {
     topicId: Number
   },
   methods: {
-    deleteMessage(id) {}
+    deleteMessage(id) {
+      messageService.delete(id)
+      .then(response => {
+      if(response.status == 200){
+        this.getMessages();
+      }
+      });
+    }
   },
   created() {
     topicService
