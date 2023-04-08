@@ -147,4 +147,55 @@ export default {
 </script>
 
 <style scoped>
+#register {
+      margin-top: 50px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    #fields {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    label {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    
+    input {
+      width: 300px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid gray;
+      padding: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    
+    router-link {
+      font-size: 16px;
+      margin-top: 10px;
+      display: inline-block;
+    }
 </style>

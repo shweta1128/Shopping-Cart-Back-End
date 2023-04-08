@@ -5,6 +5,8 @@ import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import store from '../store/index'
+import DetailView from '../views/DetailView';
+import CartView from '../views/CartView';
 
 Vue.use(Router)
 
@@ -57,7 +59,24 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/product/:productId",
+      name: "productDetails",
+      component: DetailView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: CartView,
+      meta: {
+        requiresAuth: true
+      }
     }
+   
   ]
 })
 

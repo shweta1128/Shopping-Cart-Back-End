@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 /* As the readme says an unauthorised user, we don't need permitALl*/
 //@PreAuthorize("permitAll")
 @RequestMapping(path = "/products")

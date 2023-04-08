@@ -35,7 +35,7 @@ CREATE TABLE product (
 	name varchar(50) NOT NULL,
 	description varchar,
 	price decimal(8,2) NOT NULL,
-	image_name varchar(200),
+	image_name varchar(500),
 	CONSTRAINT PK_product PRIMARY KEY (product_id)
 );
 
@@ -83,13 +83,13 @@ INSERT INTO users (username,password_hash,role, name, address, city, state_code,
 
 -- Products
 INSERT INTO product (product_sku, name, description, price, image_name) VALUES 
-    ('MUG-023', 'Solar Geeks coffee mug',  'Start your day off right!',  14.99, 'Product-MUG-023.jpg'),
-    ('YET-001', 'Solar Geeks Yeti',        'Keep cool all day long.',    21.99, 'Product-YET-001.jpg'),
-    ('ART-256', 'Galactic poster',         'Beautiful view of a galaxy',  9.59, 'Product-ART-256.jpg'),
-    ('TOY-978', 'Toy rocket',              'To infinite imagination',    39.99, 'Product-TOY-978.jpg'),
-    ('EAT-235', 'Astronaut ice cream',     'As cold as space',            5.79, 'Product-EAT-215.jpg'),
-    ('HAT-928', 'Solar Geeks baseball cap','Look stylish with our logo', 16.89, 'Product-HAT-908.jpg'),
-    ('LIT-612', 'Intro to Astrophysics',   'Learn about astrophysics',    7.99, 'Product-LIT-612.jpg');
+    ('MUG-023', 'Solar Geeks coffee mug',  'Start your day off right!',  14.99, 'https://render.fineartamerica.com/images/rendered/default/frontright/mug/images/artworkimages/medium/3/outer-space-nerd-solar-system-planets-sun-moon-chart-galaxy-lover-thomas-larch-transparent.png?&targetx=259&targety=-3&imagewidth=275&imageheight=333&modelwidth=800&modelheight=333&backgroundcolor=000000&orientation=0&producttype=coffeemug-11'),
+    ('YET-001', 'Solar Geeks Yeti',        'Keep cool all day long.',    21.99, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/718YZAeInKL._AC_SL1500_.jpg'),
+    ('ART-256', 'Galactic poster',         'Beautiful view of a galaxy',  9.59, 'https://cdn.shopify.com/s/files/1/0868/3310/products/Andromeda_20Galaxy_0173ea1f-a4a5-4a38-8ac7-4d856a4a9cf6_1024x1024.jpg?v=1489583047'),
+    ('TOY-978', 'Toy rocket',              'To infinite imagination',    39.99, 'https://media.istockphoto.com/id/145156523/photo/rocket.jpg?s=1024x1024&w=is&k=20&c=oJYjTOMEPGPO7CxMPeJQ5kcksyEqnOPbvuUiNq633Gg='),
+    ('EAT-235', 'Astronaut ice cream',     'As cold as space',            5.79, 'https://img.freepik.com/free-vector/astronaut-ice-cream-cone-cartoon-illustration-science-food-concept-isolated-flat-cartoon-style_138676-3424.jpg?w=826&t=st=1678581050~exp=1678581650~hmac=f5a31d0ce60e65f0e6d40a4b6fcedb4d7f21174d285bf867a5d3e4e99a7aebaf'),
+    ('HAT-928', 'Solar Geeks baseball cap','Look stylish with our logo', 16.89, 'https://i.etsystatic.com/30059732/r/il/be30d1/4758116225/il_1140xN.4758116225_ry72.jpg'),
+    ('LIT-612', 'Intro to Astrophysics',   'Learn about astrophysics',    7.99, 'http://planetary-science.org/wp-content/uploads/2014/09/black-hole.jpg');
 
 -- Carts
 INSERT INTO cart_item(user_id, product_id, quantity) VALUES

@@ -162,7 +162,8 @@ nav {
 display: flex;
 border: 5px solid black;
 justify-content: space-between;
-color:rgb(139, 34, 125);
+color:rgb(139, 34
+, 125);
 
 }
 #Home > a  { 

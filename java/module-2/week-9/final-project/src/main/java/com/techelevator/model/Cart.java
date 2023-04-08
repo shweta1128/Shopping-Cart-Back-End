@@ -2,7 +2,6 @@ package com.techelevator.model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class Cart {
     private BigDecimal total = new BigDecimal("0.00");
 
     private BigDecimal tax = new BigDecimal("0.0");
-    private List<CartItem> getALl = new ArrayList<>();
+    private List<CartItem> cartItems = new ArrayList<>();
 
     public BigDecimal getSubTotal() {
         return subTotal;
@@ -31,7 +30,7 @@ public class Cart {
     }
 
     public Cart(List<CartItem> getALl) {
-        this.getALl = getALl;
+        this.cartItems = getALl;
     }
 
     public BigDecimal getTax() {
@@ -43,17 +42,17 @@ public class Cart {
         this.tax = tax;
     }
 
-    public void setGetALl(List<CartItem> getALl) {
-        this.getALl = getALl;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 
-    public List<CartItem> getGetALl() {
-        return getALl;
+    public List<CartItem> getCartItems() {
+        return cartItems;
     }
     public BigDecimal subTotalOfItems(){
 
         BigDecimal total = new BigDecimal("0.0");
-        for(CartItem cartItem: getALl){
+        for(CartItem cartItem: cartItems){
             total = total.add(cartItem.getProduct().getPrice().multiply(new BigDecimal(cartItem.getQuantity())));
 
         }
