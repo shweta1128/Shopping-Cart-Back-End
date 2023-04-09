@@ -9,8 +9,20 @@
  * Example 3: filteredSum([]) --> 0
  */
 function filteredSum(arr) {
+           let sum = 0;
+  
+  arr.forEach(num => {
+      if(num >= 0 && num <= 100){
+          sum += num;
+      }
 
+  });
+     
+  return sum;
 }
+    
+
+
 
 /**
  * Given a string for the year and an array of book objects with properties for 
@@ -29,8 +41,29 @@ function filteredSum(arr) {
  *   }
  */
 function yearlyBookCount(year, bookArray) {
+    let pagesFiction = 0;
+    let pagesNonFiction = 0;
+    let FicOrNonFic = {
+        pagesFiction: 0,
+        pagesNonFiction: 0
+    }
+    
+    bookArray.forEach(book => {
+// it need another forEach loop to check each year as it is an array of year
+       book.datesRead.forEach(date => {   
+           if(date.includes(year)){
+            if(book.genres.includes("Fiction")){
+                FicOrNonFic.pagesFiction += book.pageCount ;
+            } else{
+                FicOrNonFic.pagesNonFiction += book.pageCount;
+            } 
+           }
 
+       } );  
+    });
+    return FicOrNonFic;
 }
+  
 
 /**
  * OPTIONAL: For an additional challenge, given a string year and the same array of book objects from the previous problem, 
@@ -54,5 +87,25 @@ function yearlyBookCount(year, bookArray) {
  * }
  */
 function yearlyBookStatistics(year, bookArray) {
+    let Biography = 0;
+    let Fantasy = 0;
+    let Fiction = 0;
+    let History = 0;
+    let NonFiction = 0;
+    let Poetry = 0;
+    let ScienceFiction = 0;
+    let totalBooks = 0;
+    const allGenres = {
+
+        Biography: 0, 
+        Fantasy: 0,
+        Fiction: 0,
+        History: 0,
+        NonFiction: 0,
+        Poetry: 0,
+        ScienceFiction: 0,
+        totalBooks: 0
+    }
     
+
 }

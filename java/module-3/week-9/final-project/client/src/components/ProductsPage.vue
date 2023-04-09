@@ -13,7 +13,7 @@
   <img class="product-image"  v-bind:src="product.imageName"/>
   </div>
   <div v-if="isLoggedIn">
-  <font-awesome-icon icon="fa-solid fa-cart-plus" class="cart"/>
+  <font-awesome-icon icon="fa-solid fa-cart-plus" class="cart" v-on:click="addToCart(product)" />
   </div>
   
   
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import cartService from "../services/CartService";
 
 export default {
 
@@ -32,6 +33,13 @@ export default {
     isLoggedIn() {
       return this.$store.state.token.length > 0;
     },
+  },
+  methods: {
+    addToCart(product){
+      cartService.addItemsToCart(product)
+      .then(window.alert(product.name + " Added to cart!"))  
+    
+    }
   }
 }
 

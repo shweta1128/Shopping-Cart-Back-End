@@ -30,7 +30,8 @@ export default {
     // Both options above add a & at the end of the query string.
     // Remove the last trailing &
     if (qs.length > 0) {
-        qs.slice(0, qs.length-1);
+
+      qs.slice(0, qs.length-1);
     }
     
     if (qs.trim() === '') {
