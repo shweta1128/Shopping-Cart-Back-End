@@ -9,16 +9,25 @@
  * Example 3: filteredSum([]) --> 0
  */
 function filteredSum(arr) {
-           let sum = 0;
+//            let sum = 0;
   
-  arr.forEach(num => {
-      if(num >= 0 && num <= 100){
-          sum += num;
-      }
+//   arr.forEach(num => {
+//       if(num >= 0 && num <= 100){
+//           sum += num;
+//       }
 
-  });
+//   });
      
-  return sum;
+//   return sum;
+
+let sum = 0;
+for(i =0; i<arr.length; i++){
+    if(arr[i] >=0 && arr[i] <=100 ){
+        sum += arr[i];
+    }
+   
+}
+return sum;
 }
     
 
@@ -87,25 +96,30 @@ function yearlyBookCount(year, bookArray) {
  * }
  */
 function yearlyBookStatistics(year, bookArray) {
-    let Biography = 0;
-    let Fantasy = 0;
-    let Fiction = 0;
-    let History = 0;
-    let NonFiction = 0;
-    let Poetry = 0;
-    let ScienceFiction = 0;
+    
     let totalBooks = 0;
     const allGenres = {
-
-        Biography: 0, 
-        Fantasy: 0,
-        Fiction: 0,
-        History: 0,
-        NonFiction: 0,
-        Poetry: 0,
-        ScienceFiction: 0,
         totalBooks: 0
     }
-    
+    bookArray.forEach(book => {
+        book.datesRead.forEach(date => {
+            if(date.includes(year)){
+                allGenres.totalBooks ++;
+                book.genres.forEach(genre => {
+                    if(allGenres[genre] == undefined){
+                        allGenres[genre] = 1;
+                    }
+                    else{
+                        allGenres[genre] ++;
+
+                    }
+                         
+                })
+            }
+            
+        })
+
+    })
+    return allGenres;
 
 }
