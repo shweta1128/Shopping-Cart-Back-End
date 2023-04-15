@@ -54,7 +54,7 @@ function orderVolume(stateCode, orderArray) {
         let count = 0;
         let totalWeight = 0;
         let totalSales = 0;
-    for (let i=0; i<orderArray.length; i++){
+        for (let i=0; i<orderArray.length; i++){
         const order = orderArray[i]
         if(order.state === stateCode && (order.status === 'Delivered' || order.status === 'Shipped')){
             count++;

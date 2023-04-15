@@ -22,14 +22,22 @@
 </template>
 
 <script>
+import MovieService from '../services/MovieService';
 export default {
   data() {
     return {
       // TODO - Currently using hard-coded list of genres
       allGenres: [{"id":2201,"name":"Drama"},{"id":2202,"name":"Action"},{"id":2204,"name":"Comedy"}],
+      
       titleString: "",
       selectedGenreList: []
     };
+  },
+  created(){
+    MovieService.getGenres().then(response =>{
+      this.allGenres = response.data;
+      
+    })
   },
   methods: {
     filter() {

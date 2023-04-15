@@ -9,6 +9,9 @@ export default {
   getMovieById(movieId) {
     return axios.get(`/movies-api/movies/${movieId}`);
   },
+  getGenres() {
+    return axios.get(`/movies-api/genres`);
+  },
 
   filterMovies(titleString, genresArray) {
     let qs = '';

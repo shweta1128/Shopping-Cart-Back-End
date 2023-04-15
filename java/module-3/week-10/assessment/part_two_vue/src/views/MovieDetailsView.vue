@@ -25,12 +25,13 @@ export default {
       error: null,
       isLoading: true,
       // TODO - currently shows only movie 102230, Our Father
-      movieId: 102230,
+      movieId: "",
       movieData: {}
     }
   },
   created() {
     this.isLoading = true;
+    this.movieId = this.$route.params.movieId;
     movieService.getMovieById(this.movieId)
       .then(response => {
         this.movieData = response.data;

@@ -20,15 +20,17 @@ const router = new Router({
       redirect: {name: 'allMoviesView'},
     },
     {
-      path: '/movies/details',
+      path: '/movies/:movieId',
       name: 'movieDetails',
       component: MovieDetailsView,
     },
+    
     {
       path: '/movies',
       name: 'allMoviesView',
       component: AllMoviesView,
-    }
+    },
+   
   ]
 })
 
