@@ -1,6 +1,6 @@
 <template>
   <div id="card-container">
-    <!-- {{JSON.stringify(movieList)}} -->
+    {{JSON.stringify(movieList)}}
     <movie-card v-for="movie in movies" v-bind:key="movie.id" :movie="movie"  />
   </div>
 </template>
