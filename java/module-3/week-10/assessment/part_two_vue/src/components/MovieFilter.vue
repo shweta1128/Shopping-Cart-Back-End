@@ -34,9 +34,10 @@ export default {
     };
   },
   created(){
+
     MovieService.getGenres().then(response =>{
       this.allGenres = response.data;
-      
+     
     })
   },
   methods: {

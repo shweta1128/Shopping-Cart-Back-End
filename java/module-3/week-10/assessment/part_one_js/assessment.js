@@ -52,15 +52,15 @@ function inProgressOrders(stateCode, orderArray) {
 function orderVolume(stateCode, orderArray) {
    
         let count = 0;
-        let totalWeight = 0;
-        let totalSales = 0;
+        let weight = 0;
+        let sales = 0;
         for (let i=0; i<orderArray.length; i++){
         const order = orderArray[i]
         if(order.state === stateCode && (order.status === 'Delivered' || order.status === 'Shipped')){
             count++;
-            totalWeight += order.weight;
-            totalSales += order.cost;
+            weight += order.weight;
+            sales += order.cost;
         }
     }
-      return {count,totalWeight,totalSales};
+      return {count,weight,sales};
 }
